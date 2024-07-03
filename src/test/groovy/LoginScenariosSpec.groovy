@@ -1,21 +1,21 @@
-import PageObjects.InventoryPage
+import pageObjects.InventoryPage
 import geb.spock.GebReportingSpec
 import spock.lang.Issue
-import PageObjects.SwagLabsHomePage
+import pageObjects.SwagLabsHomePage
 import spock.lang.Unroll
 
 class LoginScenariosSpec extends GebReportingSpec {
 
-    @Issue("Test login with valid user")
-    void LoginWithValidUser() {
-        when: "We navigate to the QAware homepage"
-            goToSwagLabsHomePage()
+    @Issue("Test login with valid user and logout")
+    void LogInAndLogOut() {
+        when: "We navigate to the Swag Labs homepage"
+            to SwagLabsHomePage
         then: "We are on Swag Labs home page"
             SwagLabsHomePage homePage = at SwagLabsHomePage
         when: "Type in login credentials and login"
             String userName = "standard_user"
             String password = "secret_sauce"
-            login(userName, password, homePage)
+            homePage.login(userName, password)
         then: "We are forwarded to inventory page"
             InventoryPage inventoryPage = at InventoryPage
         when: "Expand burger menu"
@@ -30,11 +30,11 @@ class LoginScenariosSpec extends GebReportingSpec {
     @Issue("Different login scenarios")
     void LoginWithDifferentUsers() {
         when: "Go to Swag Labs home page"
-            goToSwagLabsHomePage()
+            to SwagLabsHomePage
         then: "We are on Swag Labs home page"
             SwagLabsHomePage homePage = at SwagLabsHomePage
         when: "Type in login credentials and login"
-            login(userName, password, homePage)
+            homePage.login(userName, password)
         then: "Proper message is displayed"
             assert homePage.getMessage().toString() == message
         where:
@@ -45,15 +45,4 @@ class LoginScenariosSpec extends GebReportingSpec {
             "Wrong username" | "dummyUsername"   | "secret_sauce"  | "Epic sadface: Username and password do not match any user in this service"
             "Wrong password" | "standard_user"   | "dummyPassword" | "Epic sadface: Username and password do not match any user in this service"
     }
-
-    private void login(String userName, String password, SwagLabsHomePage homePage) {
-        homePage.enterUsername(userName)
-        homePage.enterPassword(password)
-        homePage.clickLoginButton()
-    }
-
-    private void goToSwagLabsHomePage(){
-        to SwagLabsHomePage
-    }
-
 }

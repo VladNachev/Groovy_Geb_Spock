@@ -1,4 +1,4 @@
-package PageObjects
+package pageObjects
 
 import geb.Page
 
@@ -8,26 +8,35 @@ class SwagLabsHomePage extends Page{
         getTitle() == "Swag Labs"
         loginLogo.isDisplayed()
     }
+
     static content = {
         loginLogo(wait: true)       { $(".login_logo") }
         usernameInput               { $("#user-name")}
         passwordInput               { $("#password")}
         loginButton                 { $("#login-button")}
         errorMessage(wait: true)    { $("h3[data-test='error']") }
-
     }
 
     void enterUsername(String input) {
         usernameInput.value(input)
     }
+
     void enterPassword(String input) {
         passwordInput.value(input)
     }
+
     void clickLoginButton() {
         loginButton.click()
     }
+
     String getMessage() {
         return errorMessage.text()
+    }
+
+    void login(String userName, String password) {
+        enterUsername(userName)
+        enterPassword(password)
+        clickLoginButton()
     }
 
 }

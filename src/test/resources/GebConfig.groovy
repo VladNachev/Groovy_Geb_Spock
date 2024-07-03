@@ -52,5 +52,3 @@ environments {
 		}
 	}
 }
-
-baseUrl = "https://www.qaware.de"
