@@ -14,7 +14,7 @@ class CartSpec extends GebReportingSpec {
             when: "Type in login credentials and login"
                 String userName = "standard_user"
                 String password = "secret_sauce"
-                login(userName, password, homePage)
+                homePage.login(userName, password)
             then: "We are forwarded to inventory page"
                 InventoryPage inventoryPage = at InventoryPage
             when: "Add Labs Backpack to Cart"
@@ -26,16 +26,7 @@ class CartSpec extends GebReportingSpec {
             and: "Remove the product from cart"
                 inventoryPage.removeLabsBackpackFromCart()
             then: "sadasdas"
-                verifyAll(inventoryPage) {
-                    getNumberOfProductsInCart() == ""
-                    !isCardContentDisplayed()
-                }
-    }
-
-    private void login(String userName, String password, SwagLabsHomePage homePage) {
-        homePage.enterUsername(userName)
-        homePage.enterPassword(password)
-        homePage.clickLoginButton()
+                assert inventoryPage.doesCartBadgeShowEmptyCart()
     }
 
 }

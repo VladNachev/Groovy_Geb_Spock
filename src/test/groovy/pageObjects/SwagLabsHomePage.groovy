@@ -11,8 +11,8 @@ class SwagLabsHomePage extends Page{
 
     static content = {
         loginLogo(wait: true)       { $(".login_logo") }
-        usernameInput               { $("#user-name")}
-        passwordInput               { $("#password")}
+        usernameInput               { $("#user-name") }
+        passwordInput               { $("#password") }
         loginButton                 { $("#login-button")}
         errorMessage(wait: true)    { $("h3[data-test='error']") }
     }
@@ -38,5 +38,4 @@ class SwagLabsHomePage extends Page{
         enterPassword(password)
         clickLoginButton()
     }
-
 }
