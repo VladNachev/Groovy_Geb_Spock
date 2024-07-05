@@ -1,7 +1,7 @@
 import pageObjects.InventoryPage
 import spock.lang.Issue
 
-class CartSpec extends BaceSpec {
+class CartSpec extends BaseSpec {
 
     @Issue("Test adding and removing product from the cart")
     void addAndRemoveProduct() {

@@ -5,7 +5,7 @@ import pageObjects.CheckoutCompletePage
 import spock.lang.Issue
 import spock.lang.Unroll
 
-class OrderSpec extends BaceSpec{
+class OrderSpec extends BaseSpec{
 
     @Unroll("Scenarios for filling personal info - #description")
     @Issue(["Place and complete an order",
