@@ -2,7 +2,6 @@ package pageObjects
 
 import geb.Page
 
-
 class CheckoutPage extends Page {
     static url = "https://www.saucedemo.com/checkout-step-one.html"
     static at = {
@@ -18,8 +17,6 @@ class CheckoutPage extends Page {
         postCodeInput                   { $("#postal-code") }
         continueButton                  { $("#continue") }
         errorMsg(wait: true)            { $("h3[data-test='error']") }
-
-
     }
 
     boolean isCheckoutInformationTitleDisplayed() {
@@ -45,6 +42,4 @@ class CheckoutPage extends Page {
     String getErrorMessage() {
         return errorMsg.text()
     }
-
-
 }

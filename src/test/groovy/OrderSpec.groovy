@@ -53,7 +53,6 @@ class OrderSpec extends BaceSpec{
             inventoryPage.emptyTheCart()
         then:"Cart is empty"
             assert inventoryPage.doesCartBadgeShowEmptyCart()
-
         where:
             description       | firstName          | lastName          | postalCode            | message
             "Positive TC"     | randomFirstName()  | randomLastName()  | randomZip()           | ""
