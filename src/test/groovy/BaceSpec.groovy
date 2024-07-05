@@ -1,7 +1,7 @@
 import geb.spock.GebReportingSpec
 import pageObjects.SwagLabsHomePage
 
-class BaseSpec extends GebReportingSpec {
+class BaceSpec extends GebReportingSpec {
     static String userName = "standard_user"
     static String password = "secret_sauce"
 

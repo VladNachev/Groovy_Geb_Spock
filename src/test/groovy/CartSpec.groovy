@@ -1,9 +1,7 @@
 import pageObjects.InventoryPage
 import spock.lang.Issue
 
-class CartSpec extends BaseSpec {
-    String userName = "standard_user"
-    String password = "secret_sauce"
+class CartSpec extends BaceSpec {
 
     @Issue("Test adding and removing product from the cart")
     void addAndRemoveProduct() {
@@ -17,7 +15,9 @@ class CartSpec extends BaseSpec {
                 assert inventoryPage.getNumberOfProductsInCart() == "1"
             when: "Click on cart"
                 inventoryPage.clickOnCart()
-            and: "Remove the product from cart"
+            then: "We are forwarded to cart inventory content"
+                inventoryPage.isCartInventoryDisplayed()
+            when: "Remove the product from cart"
                 inventoryPage.removeLabsBackpackFromCart()
             then: "Cart is empty"
                 assert inventoryPage.doesCartBadgeShowEmptyCart()

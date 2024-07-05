@@ -3,7 +3,7 @@ import spock.lang.Issue
 import pageObjects.SwagLabsHomePage
 import spock.lang.Unroll
 
-class LoginScenariosSpec extends BaseSpec {
+class LoginScenariosSpec extends BaceSpec {
 
     @Issue("Test login with valid user and logout")
     void LogInAndLogOut() {
