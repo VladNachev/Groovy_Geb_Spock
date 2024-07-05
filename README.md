@@ -12,37 +12,13 @@ Used technologies:
 - **Gradle**
 
 ### Clone the repository
-\`\`\`sh
+```bash
 git clone https://github.com/VladNachev/Groovy_Geb_Spock.git
-\`\`\`
-
-### Build the project
-\`\`\`sh
-./gradlew clean build
-\`\`\`
-
-## Running Tests
-
-To run the entire test suite:
-\`\`\`sh
-./gradlew test
-\`\`\`
-
-To run a specific test:
-\`\`\`sh
-./gradlew test --tests "path.to.your.TestClass"
-\`\`\`
-
-## Test Reports
-
-After running the tests, you can find the test reports in:
-\`\`\`
-build/reports/tests/test/index.html
-\`\`\`
+```
 
 ## Project Structure
 
-\`\`\`
+```bash
 Groovy_Geb_Spock/
 ├── src/
 │   ├── main/
@@ -63,7 +39,7 @@ Groovy_Geb_Spock/
 ├── build.gradle
 ├── gradle.properties
 └── settings.gradle
-\`\`\`
+```
 
 ## TO DO
 To add more and various tests
