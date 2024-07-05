@@ -1,20 +1,14 @@
 import pageObjects.InventoryPage
-import geb.spock.GebReportingSpec
 import spock.lang.Issue
-import pageObjects.SwagLabsHomePage
 
-class CartSpec extends GebReportingSpec {
+class CartSpec extends BaseSpec {
+    String userName = "standard_user"
+    String password = "secret_sauce"
 
     @Issue("Test adding and removing product from the cart")
     void addAndRemoveProduct() {
             when: "We navigate to the QAware homepage"
-                to SwagLabsHomePage
-            then: "We are on Swag Labs home page"
-                SwagLabsHomePage homePage = at SwagLabsHomePage
-            when: "Type in login credentials and login"
-                String userName = "standard_user"
-                String password = "secret_sauce"
-                homePage.login(userName, password)
+                navigateToHomepageAndLogin(userName, password)
             then: "We are forwarded to inventory page"
                 InventoryPage inventoryPage = at InventoryPage
             when: "Add Labs Backpack to Cart"
@@ -25,8 +19,7 @@ class CartSpec extends GebReportingSpec {
                 inventoryPage.clickOnCart()
             and: "Remove the product from cart"
                 inventoryPage.removeLabsBackpackFromCart()
-            then: "sadasdas"
+            then: "Cart is empty"
                 assert inventoryPage.doesCartBadgeShowEmptyCart()
     }
-
 }

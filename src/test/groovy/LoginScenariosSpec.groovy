@@ -1,10 +1,9 @@
 import pageObjects.InventoryPage
-import geb.spock.GebReportingSpec
 import spock.lang.Issue
 import pageObjects.SwagLabsHomePage
 import spock.lang.Unroll
 
-class LoginScenariosSpec extends GebReportingSpec {
+class LoginScenariosSpec extends BaseSpec {
 
     @Issue("Test login with valid user and logout")
     void LogInAndLogOut() {
@@ -13,8 +12,6 @@ class LoginScenariosSpec extends GebReportingSpec {
         then: "We are on Swag Labs home page"
             SwagLabsHomePage homePage = at SwagLabsHomePage
         when: "Type in login credentials and login"
-            String userName = "standard_user"
-            String password = "secret_sauce"
             homePage.login(userName, password)
         then: "We are forwarded to inventory page"
             InventoryPage inventoryPage = at InventoryPage
@@ -34,11 +31,11 @@ class LoginScenariosSpec extends GebReportingSpec {
         then: "We are on Swag Labs home page"
             SwagLabsHomePage homePage = at SwagLabsHomePage
         when: "Type in login credentials and login"
-            homePage.login(userName, password)
+            homePage.login(testUserName, testPassword)
         then: "Proper message is displayed"
             assert homePage.getMessage().toString() == message
         where:
-            description      | userName          | password        | message
+            description      | testUserName      | testPassword    | message
             "Locked user"    | "locked_out_user" | "secret_sauce"  | "Epic sadface: Sorry, this user has been locked out."
             "Username empty" | ""                | "secret_sauce"  | "Epic sadface: Username is required"
             "Password empty" | "standard_user"   | ""              | "Epic sadface: Password is required"
